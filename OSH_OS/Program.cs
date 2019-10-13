@@ -10,7 +10,7 @@ namespace OSH_OS
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("hello word");
             Console.ReadLine();
         }
     }
