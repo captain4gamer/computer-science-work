@@ -51,8 +51,9 @@ namespace OSH_OS
         {
             for (int i = 0; i < Files.Length; i++)
             {
-                if (Files[i].GetFullName() == NewFile.GetFullName())
-                    return true;
+                if(Files[i] != 0)
+                    if (Files[i].GetFullName() == NewFile.GetFullName())
+                        return true;
             }
             return false;
         }

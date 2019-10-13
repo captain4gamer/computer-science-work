@@ -164,7 +164,7 @@ namespace OSH_OS
                 count = 0;
                 for(int j = 0;j < fileCount; j++)
                 {
-                    if (type == files[j].GetFileType())
+                    if (type == File.GetFileTypeByIndex(files[j].GetFileType()))
                         count++;
                 }
                 Console.WriteLine(String.Format("type:{0}  count:{1}", type, count));
