@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSH_OS", "OSH_OS\OSH_OS.csproj", "{E56CBD1C-1CB9-4FFE-A493-DD749947B9D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSH_OS", "OSH_OS.csproj", "{E56CBD1C-1CB9-4FFE-A493-DD749947B9D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {008828EF-429A-4C05-A400-650229357859}
+		SolutionGuid = {35C1FDCF-230D-4AF9-85A4-3CF1B46AFE79}
 	EndGlobalSection
 EndGlobal
