@@ -43,6 +43,10 @@ namespace OSH_OS
         {
             return name + "." + fileTypes[fileType];
         }
+        public string GetContent()
+        {
+            return content;
+        }
         public override string ToString()
         {
             return "Name: " + GetFullName() + ", Size: " + GetSize();
