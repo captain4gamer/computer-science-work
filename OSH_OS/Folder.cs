@@ -93,6 +93,7 @@ namespace OSH_OS
                     return 2;
             }
             subFolders[folderCount] = new Folder(SubFolderName);
+            folderCount++;
             return 0;
         }
 
