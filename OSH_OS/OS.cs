@@ -19,9 +19,15 @@ namespace OSH_OS
             if (f != null)
                 f.AddSubFolder(name);
         }
-        public void CreateNewFile()
+        public void CreateNewFile(string Name, string Path, int FileType, string Content)
         {
-
+            File file = new File(Name, FileType, Content);
+            Folder f = FindFolder(Path);
+            if (f != null)
+            {
+                f.AddFile(file);
+            }
+                
         }
         public void RemoveFile()
         {
@@ -87,7 +93,31 @@ namespace OSH_OS
         }
         private File FindFile(string FullPath)
         {
-
+            string[] split = FullPath.Split(new char[] { '/' });
+            Folder folder = null;
+            File file = null;
+            if (split[0] == "Root")
+            {
+                folder = root;
+                for (int i = 1; i < split.Length-1; i++)
+                {
+                    if (folder.GetSubFolder(split[i]) != null)
+                    {
+                        folder = folder.GetSubFolder(split[i]);
+                    }
+                    else
+                    {
+                        i = split.Length;
+                        folder = null;
+                    }   
+                }
+                if (folder != null)
+                {
+                    file = folder.GetFile(split[split.Length - 1]);
+                    return file;
+                }
+            }
+            return null;
         }
     }
 }
