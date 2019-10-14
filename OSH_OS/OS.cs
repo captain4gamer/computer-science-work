@@ -40,13 +40,30 @@ namespace OSH_OS
                 }
             }
         }
-        public void CopyFile(string Origin, string FullPath)
+        public void CopyFile(string FullPath, string destination)
         {
-
+            string[] split = FullPath.Split(new char[] { '/' });
+            File file = FindFile(FullPath);
+            Folder folder = FindFolder(destination);
+            if(file != null && folder != null)
+            {
+                CreateNewFile(split[0], destination, file.GetFileType(), file.GetContent());
+            }
         }
         public void MoveFile(string origin, string destination, string name)
         {
-
+            Folder folder1 = FindFolder(origin);
+            Folder folder2 = FindFolder(destination);
+            File file = null;
+            if (folder1 != null && folder2 != null)
+            {
+                file = folder2.GetFile(name);
+                if(file != null)
+                {
+                    CopyFile(origin + "/" + name, destination);
+                    RemoveFile(name, origin);
+                }
+            }
         }
         public void RemoveFolder(string name, string path)
         {
