@@ -9,9 +9,15 @@ namespace OSH_OS
     class OS
     {
         Folder root;
+        bool running;
         public OS()
         {
             root = new Folder("Root");
+            running = true;
+        }
+        public bool IsRunning()
+        {
+            return running;
         }
         public void CreateNewFolder(string name, string path)
         {
@@ -27,7 +33,6 @@ namespace OSH_OS
             {
                 f.AddFile(file);    
             }
-    
         }
         public void RemoveFile(string Name, string path)
         {
@@ -43,11 +48,12 @@ namespace OSH_OS
         public void CopyFile(string FullPath, string destination)
         {
             string[] split = FullPath.Split(new char[] { '/' });
+            string[] splitString = split[split.Length - 1].Split(new char[] { '.' });
             File file = FindFile(FullPath);
             Folder folder = FindFolder(destination);
             if(file != null && folder != null)
             {
-                CreateNewFile(split[0], destination, file.GetFileType(), file.GetContent());
+                CreateNewFile(splitString[0], destination, file.GetFileType(), file.GetContent());
             }
         }
         public void MoveFile(string origin, string destination, string name)
@@ -57,7 +63,7 @@ namespace OSH_OS
             File file = null;
             if (folder1 != null && folder2 != null)
             {
-                file = folder2.GetFile(name);
+                file = folder1.GetFile(name);
                 if(file != null)
                 {
                     CopyFile(origin + "/" + name, destination);
@@ -130,7 +136,7 @@ namespace OSH_OS
             {
                 Console.WriteLine("Please enter the name of the path of the file");
                 string fullpath = Console.ReadLine();
-                Console.WriteLine("Please enter the destination of the file");
+                Console.WriteLine("Please enter the destination");
                 string destination = Console.ReadLine();
                 CopyFile(fullpath,destination);
             }
@@ -166,9 +172,9 @@ namespace OSH_OS
                 ListFolderContentTypes(path);
             }
             if (func == 9)
-                Environment.Exit(0);
+                running = false;
         }
-        private Folder FindFolder(string path)
+        public Folder FindFolder(string path)
         {
             string[] split = path.Split(new char[] { '/' });
             Folder folder = null;
@@ -193,14 +199,19 @@ namespace OSH_OS
         private File FindFile(string FullPath)
         {
             string[] split = FullPath.Split(new char[] { '/' });
+            string path = "";
+            for(int i = 0;i < split.Length - 1; i++)
+            {
+                path += split[i];
+            }
             Folder folder = null;
             File file = null;
-            folder = FindFolder(FullPath);
+            folder = FindFolder(path);
             if (folder != null)
-                {
-                    file = folder.GetFile(split[split.Length - 1]);
-                    return file;
-                }
+            {
+                file = folder.GetFile(split[split.Length - 1]);
+                return file;
+            }
             return null;
         }   
     }

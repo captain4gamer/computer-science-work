@@ -10,8 +10,11 @@ namespace OSH_OS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hello word");
-            Console.ReadLine();
+            OS main = new OS();
+            while (main.IsRunning())
+            {
+                main.Run();
+            }
         }
     }
 }
