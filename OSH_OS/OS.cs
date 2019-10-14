@@ -35,9 +35,16 @@ namespace OSH_OS
         {
 
         }
-        public void RemoveFolder()
+        public void RemoveFolder(string name, string path)
         {
-
+            Folder f = FindFolder(path);
+            if(f != null)
+            {
+                if(f.GetSubFolder(name) != null)
+                {
+                    f.RemoveSubFolder(name);
+                }
+            }
         }
         public void ListFolderContent()
         {
