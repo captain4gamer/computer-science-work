@@ -11,11 +11,32 @@ namespace OSH_OS
         Folder root;
         public OS()
         {
-
+            root = new Folder("Root");
         }
-        public void CreateNewFolder()
+        public void CreateNewFolder(string name, string path)
         {
-
+            string[] split = path.Split(new char[] { '/' });
+            Folder f;
+            bool b = true;
+            if(split[0] == "Root")
+            {
+                f = root;
+                for(int i = 1;i < split.Length && b; i++)
+                {
+                    if(f.GetSubFolder(split[i]) != null)
+                    {
+                        f = f.GetSubFolder(split[i]);
+                    }
+                    else
+                    {
+                        b = false;
+                    }
+                }
+                if (b)
+                {
+                    f.AddSubFolder("name");
+                }
+            }
         }
         public void CreateNewFile()
         {
