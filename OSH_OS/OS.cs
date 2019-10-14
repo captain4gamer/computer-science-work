@@ -25,26 +25,28 @@ namespace OSH_OS
             Folder f = FindFolder(Path);
             if (f != null)
             {
-                f.AddFile(file);
+                f.AddFile(file);    
             }
                 
         }
-        public void RemoveFile()
+        public void RemoveFile(string Name, string path)
         {
-
+            Folder f = FindFolder(path);
+            if (f != null)
+            {
+                if (f.GetFile(Name) != null)
+                {
+                    f.RemoveFile(Name);
+                }
+            }
         }
-        public void CopyFile()
+        public void CopyFile(string Origin, string FullPath)
         {
 
         }
         public void MoveFile(string origin, string destination, string name)
         {
-            Folder folder1 = FindFolder(origin);
-            Folder folder2 = FindFolder(destination);
-            if(folder1 != null && folder2 != null && folder1.GetFile(name) != null)
-            {
-                
-            }
+
         }
         public void RemoveFolder(string name, string path)
         {
@@ -57,7 +59,7 @@ namespace OSH_OS
                 }
             }
         }
-        public void ListFolderContent()
+        public void ListFolderContent(string Path)
         {
 
         }
