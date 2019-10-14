@@ -38,13 +38,8 @@ namespace OSH_OS
 
         }
         public void MoveFile(string origin, string destination, string name)
-        {
-            Folder folder1 = FindFolder(origin);
-            Folder folder2 = FindFolder(destination);
-            if(folder1 != null && folder2 != null && folder1.GetFile(name) != null)
-            {
-                
-            }
+        { 
+
         }
         public void RemoveFolder(string name, string path)
         {
