@@ -59,9 +59,8 @@ namespace OSH_OS
                 }
             }
         }
-        public void ListFolderContent(string Path)
+        public void ListFolderContent()
         {
-
         }
         public void ListFolderContentTypes()
         {
@@ -98,28 +97,13 @@ namespace OSH_OS
             string[] split = FullPath.Split(new char[] { '/' });
             Folder folder = null;
             File file = null;
-            if (split[0] == "Root")
-            {
-                folder = root;
-                for (int i = 1; i < split.Length-1; i++)
-                {
-                    if (folder.GetSubFolder(split[i]) != null)
-                    {
-                        folder = folder.GetSubFolder(split[i]);
-                    }
-                    else
-                    {
-                        i = split.Length;
-                        folder = null;
-                    }   
-                }
-                if (folder != null)
+            folder = FindFolder(FullPath);
+            if (folder != null)
                 {
                     file = folder.GetFile(split[split.Length - 1]);
                     return file;
                 }
-            }
             return null;
-        }
+        }   
     }
 }
