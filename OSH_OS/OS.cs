@@ -55,7 +55,6 @@ namespace OSH_OS
         {
             string[] split = path.Split(new char[] { '/' });
             Folder folder = null;
-            bool b = true;
             if (split[0] == "Root")
             {
                 folder = root;
