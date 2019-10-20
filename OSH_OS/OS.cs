@@ -49,11 +49,16 @@ namespace OSH_OS
         {
             string[] split = FullPath.Split(new char[] { '/' });
             string[] splitString = split[split.Length - 1].Split(new char[] { '.' });
+            string name = "";
+            for(int i = 0;i < split[split.Length - 1].Length - splitString[splitString.Length - 1].Length - 1; i++)
+            {
+                name += split[split.Length - 1][i];
+            }
             File file = FindFile(FullPath);
             Folder folder = FindFolder(destination);
             if(file != null && folder != null)
             {
-                CreateNewFile(splitString[0], destination, file.GetFileType(), file.GetContent());
+                CreateNewFile(name, destination, file.GetFileType(), file.GetContent());
             }
         }
         public void MoveFile(string origin, string destination, string name)
